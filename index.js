@@ -3,10 +3,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env['PORT'] || 42069;
-app.get('/', function(req, res){res.sendFile(path.join(__dirname, 'site/index.html'))});
-app.get('/particles.js', function(req, res){res.sendFile(path.join(__dirname, 'site/particles.js'))});
-app.get('/style.css', function(req, res){res.sendFile(path.join(__dirname, 'site/style.css'))});
-app.get('/favicon.ico', function(req, res){res.sendFile(path.join(__dirname, 'site/favicon.ico'))});
+// Use express.static() , works better
+app.use("/", express.static(path.join(__dirname, "site/")));
 app.listen(port);
 
 let movesThisRound = []
