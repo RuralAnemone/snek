@@ -66,7 +66,7 @@ function rewriteDirection(x, direction){ // so 0,1,2,3 is r,u,l,d (circular and 
 
 snake.onTick = function(){ // When the game updates
   if(snake.spawned){ // If the snake is alive
-    let closestApple = snake.closestApple()
+    let closestApple = snake.closestApple() // nice
     let my = snake.me()
     if (my.grow > 0) {
       score++;
@@ -104,4 +104,4 @@ function decide(me, closestApple, others){
   let direction = Math.floor(4*Math.random())
   movesThisRound.push(direction)
   return direction
-} // nice
+}
