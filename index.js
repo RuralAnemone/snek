@@ -12,14 +12,14 @@ let data = {}
 //attempt to read from /data/learning.json
 const fs = require('fs');
 
-fs.readFile('./data/learning.json', 'utf8', (err, data) => {
+fs.readFile('./data/learning.json', 'utf8', (err, contents) => {
   if (err) {
     console.error(err);
     return;
   }
-  console.log(`successfully read ./data/learning.json with data:\n${data}`);
-  if (data) {
-    let learning = JSON.parse(data).data
+  console.log(`successfully read ./data/learning.json with data:\n${contents}`);
+  if (contents) {
+    let learning = JSON.parse(contents).data
   }
 });
 
@@ -35,7 +35,7 @@ snake.onSpawn = function(x,y){ // When the snake spawns
 
 snake.onDeath = function(reason){ // When the snake dies
   console.clear()
-  fs.appendFile('./data/learning.json', data, err => {
+  fs.writeFile('./data/learning.json', JSON.stringify(data), err => {
     if (err) {
       console.error(err);
     }
@@ -77,14 +77,14 @@ snake.onTick = function(){ // When the game updates
     console.clear()
     console.log(`I am at X ${snake.x}, Y ${snake.y}`)
     console.log(`The closest apple is at X ${closestApple.x}, Y ${closestApple.y}`)
-    fs.readFile('./data/learning.json', 'utf8', (err, data) => {
+    fs.readFile('./data/learning.json', 'utf8', (err, contents) => {
       if (err) {
         console.error(err);
         return;
       }
-      console.log(`successfully read ./data/learning.json with data:\n${data}`);
-      if (data) {
-        let data = JSON.parse(data).data
+      console.log(`successfully read ./data/learning.json with data:\n${contents}`);
+      if (contents) {
+        let data = JSON.parse(contents).data
       }
     
         snake.setDirection(decide())
