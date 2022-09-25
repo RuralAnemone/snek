@@ -3,7 +3,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env['PORT'] || 42069;
-app.get('/', function(req, res){res.sendFile(path.join(__dirname, 'index.html'))});
+app.get('/', function(req, res){res.sendFile(path.join(__dirname, 'site/index.html'))});
+app.get('/particles.js', function(req, res){res.sendFile(path.join(__dirname, 'site/particles.js'))});
+app.get('/style.css', function(req, res){res.sendFile(path.join(__dirname, 'site/style.css'))});
+app.get('/favicon.ico', function(req, res){res.sendFile(path.join(__dirname, 'site/favicon.ico'))});
 app.listen(port);
 
 let movesThisRound = []
@@ -68,11 +71,13 @@ snake.onTick = function(){ // When the game updates
   if(snake.spawned){ // If the snake is alive
     let closestApple = snake.closestApple() // nice
     let my = snake.me()
-    if (my.grow > 0) {
-      score++;
-      console.log(`ate, fruit; length is now ${my.body.length}`)
-    } else {
-      score -= 0.1; // penalize the snake for doing nothing
+    if (my.grow){
+      if (my.grow > 0) {
+        score++;
+        console.log(`ate, fruit; length is now ${my.body.length}`)
+      } else {
+        score -= 0.1; // penalize the snake for doing nothing
+      }
     }
     console.clear()
     console.log(`I am at X ${snake.x}, Y ${snake.y}`)

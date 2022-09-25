@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hehe replit go brr</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <style type="text/css">
+      html {
+        background: black;
+        color: white;
+        font-family: sans-serif;
+      }
+      
+      a {
+        text-align: center;
+        color: white;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      a:hover { /* 👀 */
+        font-size: 6969px;
+        transition: 2323s;
+      }
+      .footer {
+        bottom: 1rem;
+        right: 1rem;
+        position: fixed;
+      }
+</style>
+    <style type="text/css" src="./style.css"></style>
+  </head>
+  <body>
+    <a id="a" href="#" onclick=baby()>now snek will slither forever and ever!!!!!!!!!!!! :)<br></a>
+    <script>
+      function baby() {
+        var e = ['🏻', '🏼', '🏽', '🏾', '🏿'];
+
+        function loop() {
+          var s = '',
+            i, m;
+  
+          for (i = 0; i < 10; i ++) {
+            m = Math.floor(e.length * ((Math.sin((Date.now()/100) + i)+1)/2));
+            s += '👶' + e[m];
+          }
+  
+          location.hash = s;
+  
+          setTimeout(loop, 50);
+        }
+  
+      loop();
+      }
+    </script>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src='https://threejs.org/examples/js/libs/stats.min.js'></script>
+    <script src="./particles.js"></script>
+    <a class="footer" href="https://replit.com/@ruralanemone/snek?v=1#index.js">see the code</a>
+  </body>
+</html>
