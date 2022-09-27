@@ -35,15 +35,15 @@ resolver.setServers(['1.1.1.3']);
 var ircAddress=await (resolver.resolve4("shell.oddprotocol.org"));
 console.log(ircAddress[0]);*/
 const client = new irc.Client({
-  nick: "Rural's bot",
-  host: "shell.oddprotocol.org",
+  nick: "bot",
+  host: "198.251.89.91",
   port: 7426,
-  account: {
-    account: "rural's bot",
+  /*account: {
+    account: "rurals-bot",
     password: process.env.ircPass
-  },
+  },*/
   auto_reconnect: true,
-  auto_reconnect_max_wait: 300000,
+  auto_reconnect_max_wait: 30000000,
   auto_reconnect_max_retries: 3000,
 });
 client.connect();
@@ -73,7 +73,7 @@ process.on('SIGTERM', () => {
 });
 var logChan = { action: function(data) { client.action("#rural's-snake-bot", data) }, say: function(data) { client.say("#rural's-snake-bot", data) } };
 client.on("registered", function() {
-  client.say("NickServ", `IDENTIFY rural's bot ${process.env.ircPass}`);
+  //client.say("NickServ", `IDENTIFY rurals-bot ${process.env.ircPass}`);
   client.join("#rural's-snake-bot");
   var logChan = client.channel("#rural's-snake-bot");
   //let snake = newSnake(process.env.auth) // Login with the auth cookie in the secrets tab
@@ -87,23 +87,28 @@ client.on("debug", function(debug) {
   console.log(`[DEBUG] ${debug}`);
 });
 
-client.on("invited", function(invite) {
+/*client.on("invited", function(invite) {
   client.join(invite.channel);
   bot.say(invite.channel, `Thanks for the invite, ${invite.nick}, but why should I be here?`);
-  bot.part(invite.channel, `Thanks but no thanks, ${invite.nick} - Rural's bot`);
-});
+  bot.part(invite.channel, `Thanks but no thanks, ${invite.nick} - rurals-bot`);
+});*/
 client.on("kick", function(kickEvent) {
   if (kickEvent.kicked == client.user.nick && kickEvent.channel == "#rural's-snake-bot") {
     client.join(kickEvent.channel);
-    logChan.say("Do not kick me.");
-    logChan.action(`is mad at ${kickEvent.nick}`);
-    client.say("ChanServ@services.solanum.repl", `AKICK #rural's-snake-bot ADD *!*@${kickEvent.hostname} !T 1d Don't kick Rural's bot | Automatic AKICK added by Rural's bot'`);
-    client.say("ChanServ@services.solanum.repl", "UNBAN #rural's-snake-bot");
+    //logChan.say("Do not kick me.");
+    //logChan.action(`is mad at ${kickEvent.nick}`);
+    //client.say("ChanServ@services.solanum.repl", `AKICK #rural's-snake-bot ADD *!*@${kickEvent.hostname} !T 1d Don't kick rurals-bot | Automatic AKICK added by rurals-bot'`);
+    //client.say("ChanServ@services.solanum.repl", "UNBAN #rural's-snake-bot");
     setTimeout(function() {
       bot.join("#rural");
     }, 1000);
   }
 });
+/*client.on("close",function(){
+  console.log("connecting...");
+  setTimeout(function() {client.connect();}, 10000);
+  // How about just connecting to a websocket on my bot and logging that way? I could give my bot oper, so it'd be flood exempt
+})*/
 
 // end of code that I definitely wrote and didn't just take verbatim from https://replit.com/@9pfs/snake-bot?v=1#index.js
 

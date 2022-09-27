@@ -1,4 +1,4 @@
-entrypoint = "index.js"
+entrypoint = "headHitting.js"
 
 hidden = [".config"]
 
