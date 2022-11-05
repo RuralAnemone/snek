@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.7.17",
-    "express": "^4.18.2",
+    "@types/node": "^18.7.18",
+    "express": "^4.18.1",
     "express-ws": "^5.0.2",
     "irc-framework": "^4.12.1",
     "node-fetch": "^3.2.10",
