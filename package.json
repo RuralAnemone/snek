@@ -13,7 +13,7 @@
     "@types/node": "^18.11.10",
     "express": "^4.18.1",
     "express-ws": "^5.0.2",
-    "irc-framework": "^4.12.1",
+    "irc-framework": "^4.13.0",
     "node-fetch": "^3.3.0",
     "pathfinding": "^0.4.18",
     "socket.io-client": "^4.5.4"
